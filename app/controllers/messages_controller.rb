@@ -4,11 +4,15 @@ class MessagesController < ApplicationController
     @message = @chatroom.messages.build(message_params)
 
     if @message.save
-      # Broadcast the new message to the chatroom's channel
-      ActionCable.server.broadcast "chatroom_#{@chatroom.id}", render_message(@message)
-      head :ok
+      respond_to do |format|
+        format.html { redirect_to @chatroom } # fallback if no AJAX
+        format.js   # for AJAX response
+      end
     else
-      redirect_to chatroom_path(@chatroom)
+      respond_to do |format|
+        format.html { redirect_to @chatroom }
+        format.js   # handle error
+      end
     end
   end
 

@@ -1,6 +1,17 @@
-<h1>Chatrooms</h1>
-<ul>
-  <% @chatrooms.each do |chatroom| %>
-    <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
-  <% end %>
-</ul>
+<div class="container mt-4">
+  <h1 class="display-4 text-center mb-4">Chatrooms</h1>
+
+  <div class="row">
+    <% @chatrooms.each do |chatroom| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= chatroom.name %></h5>
+            <p class="card-text">Join the chat and start a conversation!</p>
+            <%= link_to "Enter Chatroom", chatroom_path(chatroom), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
