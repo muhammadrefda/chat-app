@@ -60,3 +60,4 @@ gem "cssbundling-rails", "~> 1.4"
 
 gem "bootstrap"
 gem "sassc-rails"
+gem 'net-pop', '~> 0.1.2'
