@@ -1,0 +1,10 @@
+const messagesDiv = document.getElementById('messages');
+
+// Sisipkan pesan baru ke bagian bawah div dengan format yang diinginkan
+messagesDiv.insertAdjacentHTML('beforeend', '<p><strong><%= @message.created_at.strftime("%H:%M") %></strong>: <%= j @message.content %></p>');
+
+// Scroll ke bawah agar pesan terbaru terlihat
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+// Kosongkan input field setelah pesan dikirim
+document.querySelector('input[name="message[content]"]').value = "";
